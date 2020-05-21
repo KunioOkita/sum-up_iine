@@ -63,20 +63,25 @@
         </div>
         <script>
             window.onload = () => {
+                const iineMusic = new Audio('iine.mp3');
                 const button = document.querySelector('.heart');
                 let sendFlag = false
                 button.addEventListener('click', event => {
-                    // set css
-                    button.style.setProperty('--tx', getRandomPos());
-                    button.style.setProperty('--ty', getRandomPos());
-                    button.classList.add('clicked');
-
                     if (!sendFlag) {
+                        iineMusic.play();
+                        // set css
+                        button.style.setProperty('--tx', getRandomPos());
+                        button.style.setProperty('--ty', getRandomPos());
+                        button.classList.add('clicked');
+
+                        window.navigator.vibrate([100]);
                         socket.emit("iine");
                         sendFlag = true;
                     }
 
                     setTimeout(() => {
+                        iineMusic.pause();
+                        iineMusic.currentTime = 0;
                         button.classList.remove('clicked');
                         sendFlag = false;
                     }, 500);
