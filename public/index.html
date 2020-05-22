@@ -63,6 +63,11 @@
         </div>
         <script>
             window.onload = () => {
+                const socket = io();
+                socket.on('connect', () => {
+                    console.log('connect!');
+                    socket.emit('client_type', 'iine_client');
+                });
                 const iineMusic = new Audio('iine.mp3');
                 const button = document.querySelector('.heart');
                 let sendFlag = false
