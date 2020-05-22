@@ -61,7 +61,7 @@ io.on('connection',function(socket) {
     // clear iine.
     socket.on('clear_iine',function(msg){
         // clear iine
-        countMap = new Map();
+        countMap.clear();
     });
 });
 

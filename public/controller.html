@@ -13,6 +13,10 @@
             <button type="button" class="btn btn-outline-primary project">ikaQA</button><br/>
             <button type="button" class="btn btn-outline-primary project">HSコネクト(仮)</button><br/>
             <button type="button" class="btn btn-outline-primary project">ひよこ鑑定団</button><br/>
+            <br/>
+            <hr/>
+            <br/>
+            <button type="button" class="btn btn-outline-danger" id="clear_data">データクリア</button><br/>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -34,6 +38,11 @@
                         socket.emit('set_target', event.target.innerText);
                     });
                 }
+
+                const clearBtn = document.getElementById('clear_data');
+                clearBtn.addEventListener('click', event => {
+                    socket.emit('clear_iine');
+                });
             };
         </script>
     </body>
